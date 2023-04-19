@@ -2,3 +2,4 @@ theme = "hugo-theme-m10c"
 baseURL = 'https://dev.negtak.net/'
 languageCode = 'en-us'
 title = 'negtak'
+publishDir = "docs"

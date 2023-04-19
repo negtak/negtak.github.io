@@ -3,3 +3,4 @@ baseURL = 'https://dev.negtak.net/'
 languageCode = 'en-us'
 title = 'negtak'
 publishDir = "docs"
+canonifyurls = true

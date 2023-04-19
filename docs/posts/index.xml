@@ -6,7 +6,16 @@
     <description>Recent content in Posts on negtak</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 20 Apr 2023 04:13:06 +0900</lastBuildDate><atom:link href="https://dev.negtak.net/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 20 Apr 2023 05:22:46 +0900</lastBuildDate><atom:link href="https://dev.negtak.net/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>自宅ネットワーク構成</title>
+      <link>https://dev.negtak.net/posts/blog1/</link>
+      <pubDate>Thu, 20 Apr 2023 05:22:46 +0900</pubDate>
+      
+      <guid>https://dev.negtak.net/posts/blog1/</guid>
+      <description>自宅ネットワーク構成 </description>
+    </item>
+    
     <item>
       <title>Konchiwa</title>
       <link>https://dev.negtak.net/posts/konchiwa/</link>

@@ -4,3 +4,29 @@ languageCode = 'en-us'
 title = 'negtak'
 publishDir = "docs"
 canonifyurls = true
+
+[menu]
+  [[menu.main]]
+    identifier = "home"
+    name = "Home"
+    url = "/"
+    weight = 1
+  [[menu.main]]
+    identifier = "about"
+    name = "About"
+    url = "/about/"
+    weight = 2
+
+[params]
+  author = "negtak"
+  description = "negtak blog"
+  menu_item_separator = " - "
+  avatar = "static/avatar.jpg"
+  [[params.social]]
+    icon = "github"
+    name = "Github"
+    url = "https://github.com/negtak"
+  [[params.social]]
+    icon = "twitter"
+    name = "Twitter"
+    url = "https://twitter.com/ne9oll4"

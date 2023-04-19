@@ -20,7 +20,7 @@ pagination = 8
 
 [params]
   author = "negtak"
-  description = "negtak blog"
+  description = "negtak's blog"
   menu_item_separator = " - "
   avatar = "avatar.jpg"
   [[params.social]]

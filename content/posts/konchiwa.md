@@ -1,6 +1,7 @@
----
-title: "Konchiwa"
-date: 2023-04-20T01:27:50+09:00
-draft: true
----
++++
+title = "Konchiwa"
+tags = ["greeting"]
+date = 2023-04-20T04:13:06+09:00
++++
 
+Konchiwa

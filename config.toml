@@ -4,6 +4,7 @@ languageCode = 'en-us'
 title = 'negtak'
 publishDir = "docs"
 canonifyurls = true
+pagination = 8
 
 [menu]
   [[menu.main]]
@@ -30,3 +31,7 @@ canonifyurls = true
     icon = "twitter"
     name = "Twitter"
     url = "https://twitter.com/ne9oll4"
+  [[params.social]]
+    icon = "instagram"
+    name = "Instagram"
+    url = "https://instagram.com/ne9idak"

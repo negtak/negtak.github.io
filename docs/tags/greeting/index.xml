@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on negtak</title>
-    <link>https://dev.negtak.net/posts/</link>
-    <description>Recent content in Posts on negtak</description>
+    <title>greeting on negtak</title>
+    <link>https://dev.negtak.net/tags/greeting/</link>
+    <description>Recent content in greeting on negtak</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 20 Apr 2023 04:13:06 +0900</lastBuildDate><atom:link href="https://dev.negtak.net/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 20 Apr 2023 04:13:06 +0900</lastBuildDate><atom:link href="https://dev.negtak.net/tags/greeting/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Konchiwa</title>
       <link>https://dev.negtak.net/posts/konchiwa/</link>

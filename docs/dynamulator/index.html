@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dynamulator - 夢の恐竜園をつくろう</title>
+  <meta name="description" content="太古の恐竜たちを集め、園を飾り、来場者を魅了しよう。かわいいドット絵の恐竜園経営シミュレーション。">
+  <meta property="og:title" content="Dynamulator - 夢の恐竜園をつくろう">
+  <meta property="og:description" content="太古の恐竜たちを集め、園を飾り、来場者を魅了しよう。">
+  <meta property="og:type" content="website">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #1a1208;
+      color: #f0f0f0;
+      line-height: 1.6;
+    }
+
+    .hero {
+      background: linear-gradient(160deg, #3a2010 0%, #1a1208 60%);
+      text-align: center;
+      padding: 80px 24px 60px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 0%, rgba(220,120,30,0.12) 0%, transparent 70%);
+    }
+    .hero-icon {
+      width: 120px;
+      height: 120px;
+      border-radius: 26px;
+      background: linear-gradient(135deg, #e6781e, #a04010);
+      margin: 0 auto 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 12px 40px rgba(220,120,30,0.35);
+      overflow: hidden;
+    }
+    .hero-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .hero h1 {
+      font-size: clamp(2rem, 6vw, 3.2rem);
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      color: #ffffff;
+      margin-bottom: 12px;
+    }
+    .hero-sub {
+      font-size: clamp(1rem, 3vw, 1.2rem);
+      color: #d4a870;
+      margin-bottom: 36px;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .coming-soon-badge {
+      display: inline-block;
+      background: rgba(220,120,30,0.15);
+      border: 1px solid rgba(220,120,30,0.4);
+      color: #e6781e;
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      padding: 10px 28px;
+      border-radius: 14px;
+      text-transform: uppercase;
+    }
+
+    section { padding: 64px 24px; max-width: 900px; margin: 0 auto; }
+    h2 {
+      font-size: clamp(1.4rem, 4vw, 2rem);
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 32px;
+      text-align: center;
+    }
+    .tag {
+      display: inline-block;
+      background: rgba(220,120,30,0.15);
+      color: #e6781e;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      padding: 4px 10px;
+      border-radius: 6px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+    }
+    .feature-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 18px;
+      padding: 28px 24px;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .feature-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(220,120,30,0.35);
+    }
+    .feature-icon {
+      font-size: 2.2rem;
+      margin-bottom: 14px;
+    }
+    .feature-card h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 8px;
+    }
+    .feature-card p {
+      font-size: 0.9rem;
+      color: #8a9bb0;
+      line-height: 1.55;
+    }
+
+    .dev-section {
+      background: rgba(220,120,30,0.05);
+      border-radius: 24px;
+      padding: 40px 32px;
+      text-align: center;
+    }
+    .dev-section p {
+      color: #d4a870;
+      font-size: 0.95rem;
+      line-height: 1.8;
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px 24px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      color: #4a5a6a;
+      font-size: 0.85rem;
+    }
+    footer a { color: #7a5a3a; text-decoration: none; margin: 0 10px; }
+    footer a:hover { color: #e6781e; }
+
+    @media (max-width: 480px) {
+      .hero { padding: 60px 20px 48px; }
+      section { padding: 48px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-icon"><img src="./AppIcon.png" alt="Dynamulator"></div>
+  <h1>Dynamulator</h1>
+  <p class="hero-sub">夢の恐竜園をつくろう。<br>かわいいドット絵の恐竜園経営シミュレーション。</p>
+  <div class="coming-soon-badge">Coming Soon</div>
+</div>
+
+<section>
+  <div class="tag">Features</div>
+  <h2>恐竜園を自由に育てよう</h2>
+  <div class="features">
+    <div class="feature-card">
+      <div class="feature-icon">🦕</div>
+      <h3>多彩な恐竜たち</h3>
+      <p>ティラノサウルス、トリケラトプス、ブラキオサウルス…伝説の古代生物も登場。ガチャで仲間を集めよう。</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🌋</div>
+      <h3>時代別エリア</h3>
+      <p>三畳紀・ジュラ紀・白亜紀など、それぞれの時代に合ったエリアを設計しよう。</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">✨</div>
+      <h3>コンボボーナス</h3>
+      <p>特定の恐竜・設備の組み合わせで隠れたコンボを発動。来場者数が跳ね上がる！</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🌿</div>
+      <h3>太古のイベント</h3>
+      <p>季節ごとに特別な恐竜が登場。期間限定の発掘イベントを楽しもう。</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">👨‍👩‍👧</div>
+      <h3>個性豊かな来場者</h3>
+      <p>家族連れ・古生物学者・冒険家…恐竜の組み合わせで珍しい来場者が現れる。</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🏆</div>
+      <h3>恐竜園ランク</h3>
+      <p>累計来場者数に応じてランクアップ。新しい恐竜や設備が次々と解放される。</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div style="max-width:680px;margin:0 auto;">
+    <div class="dev-section">
+      <div class="tag">Status</div>
+      <h2 style="margin-top:16px;">現在開発中です</h2>
+      <p>Dynamulatorは鋭意開発中です。<br>
+      リリース情報はこのページでお知らせします。<br>
+      ご質問は <a href="./support.html" style="color:#e6781e;">サポートページ</a> からお気軽にどうぞ。</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p style="margin-bottom:12px;">
+    <a href="./privacy-policy.html">プライバシーポリシー</a>
+    <a href="./support.html">サポート</a>
+  </p>
+  <p>© 2025 Dynamulator. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

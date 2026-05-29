@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aquamulator - 夢の水族館をつくろう</title>
+  <meta name="description" content="魚や海の生き物を集め、水槽を飾り、来場者を魅了しよう。かわいいドット絵の水族館経営シミュレーション。">
+  <meta property="og:title" content="Aquamulator - 夢の水族館をつくろう">
+  <meta property="og:description" content="魚や海の生き物を集め、水槽を飾り、来場者を魅了しよう。">
+  <meta property="og:type" content="website">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #0a1628;
+      color: #f0f0f0;
+      line-height: 1.6;
+    }
+
+    /* ── ヒーロー ── */
+    .hero {
+      background: linear-gradient(160deg, #0d2a4a 0%, #0a1628 60%);
+      text-align: center;
+      padding: 80px 24px 60px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 0%, rgba(0,180,220,0.12) 0%, transparent 70%);
+    }
+    .hero-icon {
+      width: 120px;
+      height: 120px;
+      border-radius: 26px;
+      background: linear-gradient(135deg, #00b4dc, #0066aa);
+      margin: 0 auto 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 64px;
+      box-shadow: 0 12px 40px rgba(0,180,220,0.35);
+      overflow: hidden;
+    }
+    .hero-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .hero h1 {
+      font-size: clamp(2rem, 6vw, 3.2rem);
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      color: #ffffff;
+      margin-bottom: 12px;
+    }
+    .hero-sub {
+      font-size: clamp(1rem, 3vw, 1.2rem);
+      color: #7ec8e3;
+      margin-bottom: 36px;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* ── Coming Soon バッジ ── */
+    .coming-soon-badge {
+      display: inline-block;
+      background: rgba(0,180,220,0.15);
+      border: 1px solid rgba(0,180,220,0.4);
+      color: #00b4dc;
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      padding: 10px 28px;
+      border-radius: 14px;
+      text-transform: uppercase;
+    }
+
+    /* ── セクション共通 ── */
+    section { padding: 64px 24px; max-width: 900px; margin: 0 auto; }
+    h2 {
+      font-size: clamp(1.4rem, 4vw, 2rem);
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 32px;
+      text-align: center;
+    }
+    .tag {
+      display: inline-block;
+      background: rgba(0,180,220,0.15);
+      color: #00b4dc;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      padding: 4px 10px;
+      border-radius: 6px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    /* ── 特徴グリッド ── */
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+    }
+    .feature-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 18px;
+      padding: 28px 24px;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .feature-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(0,180,220,0.35);
+    }
+    .feature-icon {
+      font-size: 2.2rem;
+      margin-bottom: 14px;
+    }
+    .feature-card h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 8px;
+    }
+    .feature-card p {
+      font-size: 0.9rem;
+      color: #8a9bb0;
+      line-height: 1.55;
+    }
+
+    /* ── 開発中バナー ── */
+    .dev-section {
+      background: rgba(0,180,220,0.05);
+      border-radius: 24px;
+      padding: 40px 32px;
+      text-align: center;
+    }
+    .dev-section p {
+      color: #7ec8e3;
+      font-size: 0.95rem;
+      line-height: 1.8;
+    }
+
+    /* ── フッター ── */
+    footer {
+      text-align: center;
+      padding: 40px 24px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      color: #4a5a6a;
+      font-size: 0.85rem;
+    }
+    footer a { color: #4a7a8a; text-decoration: none; margin: 0 10px; }
+    footer a:hover { color: #00b4dc; }
+
+    @media (max-width: 480px) {
+      .hero { padding: 60px 20px 48px; }
+      section { padding: 48px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── ヒーロー ── -->
+<div class="hero">
+  <div class="hero-icon"><img src="./AppIcon.png" alt="Aquamulator"></div>
+  <h1>Aquamulator</h1>
+  <p class="hero-sub">夢の水族館をつくろう。<br>かわいいドット絵の水族館経営シミュレーション。</p>
+  <div class="coming-soon-badge">Coming Soon</div>
+</div>
+
+<!-- ── 特徴 ── -->
+<section>
+  <div class="tag">Features</div>
+  <h2>水族館を自由に育てよう</h2>
+  <div class="features">
+    <div class="feature-card">
+      <div class="feature-icon">🐠</div>
+      <h3>多彩な海の生き物</h3>
+      <p>熱帯魚、サメ、クラゲ、タコ…レアな深海生物も登場。ガチャで仲間を集めよう。</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🐟</div>
+      <h3>水槽のカスタマイズ</h3>
+      <p>サンゴ礁・深海・淡水・氷海など、さまざまな環境の水槽を設計しよう。</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">✨</div>
+      <h3>コンボボーナス</h3>
+      <p>特定の生き物・設備の組み合わせで隠れたコンボを発動。来場者数が跳ね上がる！</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🌊</div>
+      <h3>海のイベント</h3>
+      <p>季節ごとに特別な生き物が登場。期間限定イベントを楽しもう。</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">👨‍👩‍👧</div>
+      <h3>個性豊かな来場者</h3>
+      <p>家族連れ・ダイバー・研究者・写真家…生き物の組み合わせで珍しい来場者が現れる。</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🏆</div>
+      <h3>水族館ランク</h3>
+      <p>累計来場者数に応じてランクアップ。新しい生き物や設備が次々と解放される。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── 開発中 ── -->
+<section>
+  <div style="max-width:680px;margin:0 auto;">
+    <div class="dev-section">
+      <div class="tag">Status</div>
+      <h2 style="margin-top:16px;">現在開発中です</h2>
+      <p>Aquamulatorは鋭意開発中です。<br>
+      リリース情報はこのページでお知らせします。<br>
+      ご質問は <a href="./support.html" style="color:#00b4dc;">サポートページ</a> からお気軽にどうぞ。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── フッター ── -->
+<footer>
+  <p style="margin-bottom:12px;">
+    <a href="./privacy-policy.html">プライバシーポリシー</a>
+    <a href="./support.html">サポート</a>
+  </p>
+  <p>© 2025 Aquamulator. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

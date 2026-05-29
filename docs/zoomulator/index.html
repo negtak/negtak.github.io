@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zoomulator - 夢の動物園をつくろう</title>
+  <meta name="description" content="30種以上の動物を集め、区画を飾り、来場者を魅了しよう。かわいいドット絵の動物園経営シミュレーション。">
+  <meta property="og:title" content="Zoomulator - 夢の動物園をつくろう">
+  <meta property="og:description" content="30種以上の動物を集め、区画を飾り、来場者を魅了しよう。">
+  <meta property="og:type" content="website">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #0f1923;
+      color: #f0f0f0;
+      line-height: 1.6;
+    }
+
+    /* ── ヒーロー ── */
+    .hero {
+      background: linear-gradient(160deg, #1a3a2a 0%, #0f1923 60%);
+      text-align: center;
+      padding: 80px 24px 60px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 0%, rgba(80,200,120,0.12) 0%, transparent 70%);
+    }
+    .hero-icon {
+      width: 120px;
+      height: 120px;
+      border-radius: 26px;
+      background: linear-gradient(135deg, #2ecc71, #1a7a40);
+      margin: 0 auto 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 64px;
+      box-shadow: 0 12px 40px rgba(46,204,113,0.35);
+    }
+    .hero h1 {
+      font-size: clamp(2rem, 6vw, 3.2rem);
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      color: #ffffff;
+      margin-bottom: 12px;
+    }
+    .hero-sub {
+      font-size: clamp(1rem, 3vw, 1.2rem);
+      color: #9ecfb0;
+      margin-bottom: 36px;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .btn-appstore {
+      display: inline-block;
+      background: #ffffff;
+      color: #000000;
+      text-decoration: none;
+      padding: 14px 32px;
+      border-radius: 14px;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.2px;
+      box-shadow: 0 6px 24px rgba(0,0,0,0.4);
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .btn-appstore:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 32px rgba(0,0,0,0.5);
+    }
+    .btn-appstore span { opacity: 0.55; font-size: 0.78rem; display: block; font-weight: 400; }
+
+    /* ── セクション共通 ── */
+    section { padding: 64px 24px; max-width: 900px; margin: 0 auto; }
+    h2 {
+      font-size: clamp(1.4rem, 4vw, 2rem);
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 32px;
+      text-align: center;
+    }
+    .tag {
+      display: inline-block;
+      background: rgba(46,204,113,0.15);
+      color: #2ecc71;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      padding: 4px 10px;
+      border-radius: 6px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    /* ── 特徴グリッド ── */
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+    }
+    .feature-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 18px;
+      padding: 28px 24px;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .feature-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(46,204,113,0.35);
+    }
+    .feature-icon {
+      font-size: 2.2rem;
+      margin-bottom: 14px;
+    }
+    .feature-card h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 8px;
+    }
+    .feature-card p {
+      font-size: 0.9rem;
+      color: #8a9bb0;
+      line-height: 1.55;
+    }
+
+    /* ── 新機能 ── */
+    .new-section { background: rgba(46,204,113,0.05); border-radius: 24px; padding: 40px 32px; }
+    .new-list { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+    .new-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      font-size: 0.95rem;
+      color: #c0d8cc;
+    }
+    .new-list li::before {
+      content: "✦";
+      color: #2ecc71;
+      font-size: 0.8rem;
+      margin-top: 3px;
+      flex-shrink: 0;
+    }
+    .new-list strong { color: #ffffff; }
+
+    /* ── フッター ── */
+    footer {
+      text-align: center;
+      padding: 40px 24px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      color: #4a5a6a;
+      font-size: 0.85rem;
+    }
+    footer a { color: #6a8a7a; text-decoration: none; margin: 0 10px; }
+    footer a:hover { color: #2ecc71; }
+
+    @media (max-width: 480px) {
+      .hero { padding: 60px 20px 48px; }
+      section { padding: 48px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── ヒーロー ── -->
+<div class="hero">
+  <div class="hero-icon">🦁</div>
+  <h1>Zoomulator</h1>
+  <p class="hero-sub">夢の動物園をつくろう。<br>かわいいドット絵の動物園経営シミュレーション。</p>
+  <a href="https://apps.apple.com/jp/app/zoomulator/idXXXXXXXXXX" class="btn-appstore">
+    <span>ダウンロード</span>App Store で無料で入手
+  </a>
+</div>
+
+<!-- ── 特徴 ── -->
+<section>
+  <div class="tag">Features</div>
+  <h2>動物園を自由に育てよう</h2>
+  <div class="features">
+    <div class="feature-card">
+      <div class="feature-icon">🐘</div>
+      <h3>30種以上の動物</h3>
+      <p>ライオン、ゾウ、チーター、フラミンゴ…希少な神獣も登場。ガチャで仲間を集めよう。</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🏕️</div>
+      <h3>5種類の区画</h3>
+      <p>サバンナ・森林・北極・湿地・荒れ地。それぞれに合った動物と設備でカスタマイズ。</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🎪</div>
+      <h3>コンボボーナス</h3>
+      <p>特定の動物・設備の組み合わせで隠れたコンボを発動。来場者数が一気に跳ね上がる！</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🌸</div>
+      <h3>四季とイベント</h3>
+      <p>春夏秋冬で来場者数や動物の魅力が変化。季節限定イベントも発生。</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">👥</div>
+      <h3>20種以上の来場者</h3>
+      <p>家族連れ・カメラマン・研究者・忍者…動物の組み合わせで珍しい来場者が現れる。</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">⭐</div>
+      <h3>30段階の動物園ランク</h3>
+      <p>累計来場者数に応じてランクアップ。ランク賞金と新しい動物・設備が解放される。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── 新機能 ── -->
+<section>
+  <div style="max-width:680px;margin:0 auto;">
+    <div class="new-section">
+      <div class="tag">New</div>
+      <h2 style="text-align:left;margin-top:8px;">最新アップデート v1.1</h2>
+      <ul class="new-list">
+        <li><div><strong>交配センター</strong> — 同じ種類・同じレベルの動物2頭でペアを組み、赤ちゃんを育てよう。成功率50%のドキドキ体験。</div></li>
+        <li><div><strong>遠征システム</strong> — 動物を遠征に送り出して特別な報酬をゲット。最大2頭同時に派遣できる。</div></li>
+        <li><div><strong>夜間照明エフェクト</strong> — 夜になると動物ゾーンにライトが灯り、幻想的な雰囲気に。</div></li>
+        <li><div><strong>神獣ガチャ強化</strong> — プレミアムガチャから登場する動物はすべてレベル上限50でご登場。</div></li>
+        <li><div><strong>新動物追加</strong> — オオカミ・ティラノサウルス・ウォンバット・オオハシが新登場。</div></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA ── -->
+<section style="text-align:center;padding-top:0;">
+  <p style="color:#8a9bb0;margin-bottom:24px;font-size:0.95rem;">無料でプレイ開始。iPhoneで今すぐ。</p>
+  <a href="https://apps.apple.com/jp/app/zoomulator/idXXXXXXXXXX" class="btn-appstore">
+    <span>App Store</span>無料でダウンロード
+  </a>
+</section>
+
+<!-- ── フッター ── -->
+<footer>
+  <p style="margin-bottom:12px;">
+    <a href="/privacy.html">プライバシーポリシー</a>
+    <a href="mailto:negdev0114@gmail.com">サポート</a>
+  </p>
+  <p>© 2025 Zoomulator. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

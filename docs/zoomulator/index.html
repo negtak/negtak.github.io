@@ -43,6 +43,21 @@
       justify-content: center;
       font-size: 64px;
       box-shadow: 0 12px 40px rgba(46,204,113,0.35);
+      overflow: hidden;
+    }
+    .hero-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .feature-icon {
+      font-size: 48px;
+      margin-bottom: 12px;
+    }
+    .feature-icon img {
+      width: 48px;
+      height: 48px;
+      display: inline-block;
     }
     .hero h1 {
       font-size: clamp(2rem, 6vw, 3.2rem);
@@ -173,7 +188,7 @@
 
 <!-- ── ヒーロー ── -->
 <div class="hero">
-  <div class="hero-icon">🦁</div>
+  <div class="hero-icon"><img src="./AppIcon.png" alt="Zoomulator"></div>
   <h1>Zoomulator</h1>
   <p class="hero-sub">夢の動物園をつくろう。<br>かわいいドット絵の動物園経営シミュレーション。</p>
   <a href="https://apps.apple.com/app/zoomulator/id6774018590" class="btn-appstore">
@@ -187,32 +202,26 @@
   <h2>動物園を自由に育てよう</h2>
   <div class="features">
     <div class="feature-card">
-      <div class="feature-icon">🐘</div>
       <h3>30種以上の動物</h3>
       <p>ライオン、ゾウ、チーター、フラミンゴ…希少な神獣も登場。ガチャで仲間を集めよう。</p>
     </div>
     <div class="feature-card">
-      <div class="feature-icon">🏕️</div>
       <h3>5種類の区画</h3>
       <p>サバンナ・森林・北極・湿地・荒れ地。それぞれに合った動物と設備でカスタマイズ。</p>
     </div>
     <div class="feature-card">
-      <div class="feature-icon">🎪</div>
       <h3>コンボボーナス</h3>
       <p>特定の動物・設備の組み合わせで隠れたコンボを発動。来場者数が一気に跳ね上がる！</p>
     </div>
     <div class="feature-card">
-      <div class="feature-icon">🌸</div>
       <h3>四季とイベント</h3>
       <p>春夏秋冬で来場者数や動物の魅力が変化。季節限定イベントも発生。</p>
     </div>
     <div class="feature-card">
-      <div class="feature-icon">👥</div>
       <h3>20種以上の来場者</h3>
       <p>家族連れ・カメラマン・研究者・忍者…動物の組み合わせで珍しい来場者が現れる。</p>
     </div>
     <div class="feature-card">
-      <div class="feature-icon">⭐</div>
       <h3>30段階の動物園ランク</h3>
       <p>累計来場者数に応じてランクアップ。ランク賞金と新しい動物・設備が解放される。</p>
     </div>
@@ -245,8 +254,8 @@
 <!-- ── フッター ── -->
 <footer>
   <p style="margin-bottom:12px;">
-    <a href="/privacy.html">プライバシーポリシー</a>
-    <a href="mailto:negdev0114@gmail.com">サポート</a>
+    <a href="/privacy-policy.html">プライバシーポリシー</a>
+    <a href="/support.html">サポート</a>
   </p>
   <p>© 2025 Zoomulator. All rights reserved.</p>
 </footer>

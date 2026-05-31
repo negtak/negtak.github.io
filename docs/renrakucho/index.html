@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>れんらくちょう - ふたりで1冊のれんらくノート</title>
+  <meta name="description" content="カップルや家族で「れんらくごと」を共有するアプリ。買い物メモ・きめごと・おかねの記録を、ふたりで1冊のノートのように共有できます。">
+  <meta property="og:title" content="れんらくちょう - ふたりで1冊のれんらくノート">
+  <meta property="og:description" content="カップルや家族で「れんらくごと」を共有するアプリ。買い物メモ・きめごと・おかねを、ふたりで1冊のノートのように。">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://negtak.github.io/renrakucho/AppIcon.png">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #1d1410;
+      color: #f0f0f0;
+      line-height: 1.6;
+    }
+
+    /* ── ヒーロー ── */
+    .hero {
+      background: linear-gradient(160deg, #3a2218 0%, #1d1410 60%);
+      text-align: center;
+      padding: 80px 24px 60px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 0%, rgba(238,120,30,0.14) 0%, transparent 70%);
+    }
+    .hero-icon {
+      width: 120px;
+      height: 120px;
+      border-radius: 26px;
+      margin: 0 auto 24px;
+      box-shadow: 0 12px 40px rgba(238,120,30,0.35);
+      overflow: hidden;
+    }
+    .hero-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .hero h1 {
+      font-size: clamp(2rem, 6vw, 3.2rem);
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      color: #ffffff;
+      margin-bottom: 12px;
+    }
+    .hero-sub {
+      font-size: clamp(1rem, 3vw, 1.2rem);
+      color: #f0b48a;
+      margin-bottom: 36px;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* ── Coming Soon バッジ ── */
+    .coming-soon-badge {
+      display: inline-block;
+      background: rgba(238,120,30,0.15);
+      border: 1px solid rgba(238,120,30,0.4);
+      color: #ff9a4d;
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      padding: 10px 28px;
+      border-radius: 14px;
+      text-transform: uppercase;
+    }
+
+    /* ── セクション共通 ── */
+    section { padding: 64px 24px; max-width: 900px; margin: 0 auto; }
+    h2 {
+      font-size: clamp(1.4rem, 4vw, 2rem);
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 32px;
+      text-align: center;
+    }
+    .tag {
+      display: inline-block;
+      background: rgba(238,120,30,0.15);
+      color: #ff9a4d;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      padding: 4px 10px;
+      border-radius: 6px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    /* ── 特徴グリッド ── */
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+    }
+    .feature-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 18px;
+      padding: 28px 24px;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .feature-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(238,120,30,0.35);
+    }
+    .feature-icon {
+      font-size: 2.2rem;
+      margin-bottom: 14px;
+    }
+    .feature-card h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 8px;
+    }
+    .feature-card p {
+      font-size: 0.9rem;
+      color: #b0a195;
+      line-height: 1.55;
+    }
+
+    /* ── 使い方 ── */
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      counter-reset: step;
+    }
+    .step-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 18px;
+      padding: 28px 24px;
+      position: relative;
+    }
+    .step-card .num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #ff9a4d, #ee6a2a);
+      color: #fff;
+      font-weight: 800;
+      margin-bottom: 14px;
+    }
+    .step-card h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 8px;
+    }
+    .step-card p {
+      font-size: 0.9rem;
+      color: #b0a195;
+      line-height: 1.55;
+    }
+
+    /* ── 開発中バナー ── */
+    .dev-section {
+      background: rgba(238,120,30,0.05);
+      border-radius: 24px;
+      padding: 40px 32px;
+      text-align: center;
+    }
+    .dev-section p {
+      color: #f0b48a;
+      font-size: 0.95rem;
+      line-height: 1.8;
+    }
+
+    /* ── フッター ── */
+    footer {
+      text-align: center;
+      padding: 40px 24px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      color: #6a5a4a;
+      font-size: 0.85rem;
+    }
+    footer a { color: #a07a5a; text-decoration: none; margin: 0 10px; }
+    footer a:hover { color: #ff9a4d; }
+
+    @media (max-width: 480px) {
+      .hero { padding: 60px 20px 48px; }
+      section { padding: 48px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── ヒーロー ── -->
+<div class="hero">
+  <div class="hero-icon"><img src="./AppIcon.png" alt="れんらくちょう"></div>
+  <h1>れんらくちょう</h1>
+  <p class="hero-sub">カップルや家族で「れんらくごと」を共有。<br>ふたりで1冊のノートを開くように。</p>
+  <div class="coming-soon-badge">Coming Soon</div>
+</div>
+
+<!-- ── 特徴 ── -->
+<section>
+  <div class="tag">Features</div>
+  <h2>ふたりの暮らしを、ひとつに</h2>
+  <div class="features">
+    <div class="feature-card">
+      <div class="feature-icon">📝</div>
+      <h3>れんらく</h3>
+      <p>「洗剤が切れた」「牛乳を買って」。買い物や連絡をリストで共有。チェックして完了、まとめて消せる。</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">📌</div>
+      <h3>きめごと</h3>
+      <p>「ゴミ出しは交代」などのルールや取り決めを、消えないノートとして永続的に記録。</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">💰</div>
+      <h3>おかね</h3>
+      <p>支出を金額・内容・支払者で記録。メンバー別＆全体の合計を自動で集計。</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🔗</div>
+      <h3>かんたん連携</h3>
+      <p>片方が作成して6桁の招待コードを共有するだけ。相手はコードを入れて参加。</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">⚡</div>
+      <h3>リアルタイム同期</h3>
+      <p>追加・チェックした内容は相手の画面にもすぐ反映。離れていても同じノートを開ける。</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🙂</div>
+      <h3>はじめやすい</h3>
+      <p>名前を入れるだけですぐスタート。むずかしい登録は不要です。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── 使い方 ── -->
+<section>
+  <div class="tag" style="display:block;text-align:center;">How to use</div>
+  <h2>3ステップではじめる</h2>
+  <div class="steps">
+    <div class="step-card">
+      <div class="num">1</div>
+      <h3>はじめる</h3>
+      <p>名前を入れてサインイン。すぐに使いはじめられます。</p>
+    </div>
+    <div class="step-card">
+      <div class="num">2</div>
+      <h3>コードを共有</h3>
+      <p>れんらくちょうを作って、発行された6桁コードを相手に送ります。</p>
+    </div>
+    <div class="step-card">
+      <div class="num">3</div>
+      <h3>ふたりで使う</h3>
+      <p>相手がコードで参加すれば準備完了。1冊のノートを一緒に書き込めます。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── 開発中 ── -->
+<section>
+  <div style="max-width:680px;margin:0 auto;">
+    <div class="dev-section">
+      <div class="tag">Status</div>
+      <h2 style="margin-top:16px;">現在開発中です</h2>
+      <p>れんらくちょうは鋭意開発中です。<br>
+      リリース情報はこのページでお知らせします。<br>
+      ご質問は <a href="./support.html" style="color:#ff9a4d;">サポートページ</a> からお気軽にどうぞ。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── フッター ── -->
+<footer>
+  <p style="margin-bottom:12px;">
+    <a href="./privacy-policy.html">プライバシーポリシー</a>
+    <a href="./support.html">サポート</a>
+  </p>
+  <p>© 2026 れんらくちょう. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

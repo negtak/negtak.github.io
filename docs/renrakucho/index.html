@@ -63,19 +63,25 @@
       margin-right: auto;
     }
 
-    /* ── Coming Soon バッジ ── */
-    .coming-soon-badge {
+    /* ── App Store ボタン ── */
+    .btn-appstore {
       display: inline-block;
-      background: rgba(238,120,30,0.15);
-      border: 1px solid rgba(238,120,30,0.4);
-      color: #ff9a4d;
-      font-size: 0.9rem;
-      font-weight: 700;
-      letter-spacing: 2px;
-      padding: 10px 28px;
+      background: #ffffff;
+      color: #000000;
+      text-decoration: none;
+      padding: 14px 32px;
       border-radius: 14px;
-      text-transform: uppercase;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.2px;
+      box-shadow: 0 6px 24px rgba(0,0,0,0.4);
+      transition: transform 0.15s, box-shadow 0.15s;
     }
+    .btn-appstore:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 32px rgba(0,0,0,0.5);
+    }
+    .btn-appstore span { opacity: 0.55; font-size: 0.78rem; display: block; font-weight: 400; }
 
     /* ── セクション共通 ── */
     section { padding: 64px 24px; max-width: 900px; margin: 0 auto; }
@@ -170,19 +176,6 @@
       line-height: 1.55;
     }
 
-    /* ── 開発中バナー ── */
-    .dev-section {
-      background: rgba(238,120,30,0.05);
-      border-radius: 24px;
-      padding: 40px 32px;
-      text-align: center;
-    }
-    .dev-section p {
-      color: #f0b48a;
-      font-size: 0.95rem;
-      line-height: 1.8;
-    }
-
     /* ── フッター ── */
     footer {
       text-align: center;
@@ -207,7 +200,9 @@
   <div class="hero-icon"><img src="./AppIcon.png" alt="れんらくちょう"></div>
   <h1>れんらくちょう</h1>
   <p class="hero-sub">カップルや家族で「れんらくごと」を共有。<br>ふたりで1冊のノートを開くように。</p>
-  <div class="coming-soon-badge">Coming Soon</div>
+  <a href="https://apps.apple.com/app/%E3%82%8C%E3%82%93%E3%82%89%E3%81%8F%E3%81%A1%E3%82%87%E3%81%86/id6775222668" class="btn-appstore">
+    <span>ダウンロード</span>App Store で無料で入手
+  </a>
 </div>
 
 <!-- ── 特徴 ── -->
@@ -271,17 +266,12 @@
   </div>
 </section>
 
-<!-- ── 開発中 ── -->
-<section>
-  <div style="max-width:680px;margin:0 auto;">
-    <div class="dev-section">
-      <div class="tag">Status</div>
-      <h2 style="margin-top:16px;">現在開発中です</h2>
-      <p>れんらくちょうは鋭意開発中です。<br>
-      リリース情報はこのページでお知らせします。<br>
-      ご質問は <a href="./support.html" style="color:#ff9a4d;">サポートページ</a> からお気軽にどうぞ。</p>
-    </div>
-  </div>
+<!-- ── CTA ── -->
+<section style="text-align:center;padding-top:0;">
+  <p style="color:#b0a195;margin-bottom:24px;font-size:0.95rem;">無料で今すぐ。ふたりのれんらくちょうを開こう。</p>
+  <a href="https://apps.apple.com/app/%E3%82%8C%E3%82%93%E3%82%89%E3%81%8F%E3%81%A1%E3%82%87%E3%81%86/id6775222668" class="btn-appstore">
+    <span>App Store</span>無料でダウンロード
+  </a>
 </section>
 
 <!-- ── フッター ── -->

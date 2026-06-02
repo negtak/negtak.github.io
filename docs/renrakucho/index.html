@@ -83,12 +83,44 @@
     }
     .btn-appstore span { opacity: 0.55; font-size: 0.78rem; display: block; font-weight: 400; }
 
+    /* テスト参加ボタン（アウトライン） */
+    .btn-test {
+      display: inline-block;
+      background: transparent;
+      color: #ffffff;
+      text-decoration: none;
+      padding: 13px 31px;
+      border-radius: 14px;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.2px;
+      border: 1px solid rgba(255,255,255,0.35);
+      transition: transform 0.15s, border-color 0.15s, background 0.15s;
+    }
+    .btn-test:hover {
+      transform: translateY(-2px);
+      border-color: rgba(255,154,77,0.7);
+      background: rgba(238,120,30,0.08);
+    }
+    .btn-test span { opacity: 0.6; font-size: 0.78rem; display: block; font-weight: 400; }
+
     .store-buttons {
       display: flex;
       gap: 14px;
       justify-content: center;
       flex-wrap: wrap;
     }
+    .store-note {
+      margin-top: 16px;
+      font-size: 0.82rem;
+      color: #b0a195;
+      line-height: 1.7;
+      max-width: 440px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .store-note a { color: #ff9a4d; text-decoration: none; }
+    .store-note a:hover { text-decoration: underline; }
 
     /* ── セクション共通 ── */
     section { padding: 64px 24px; max-width: 900px; margin: 0 auto; }
@@ -211,10 +243,15 @@
     <a href="https://apps.apple.com/app/%E3%82%8C%E3%82%93%E3%82%89%E3%81%8F%E3%81%A1%E3%82%87%E3%81%86/id6775222668" class="btn-appstore">
       <span>ダウンロード</span>App Store で無料で入手
     </a>
-    <a href="https://play.google.com/store/apps/details?id=com.renrakucho.renrakucho" class="btn-appstore">
-      <span>ダウンロード</span>Google Play で無料で入手
+    <a href="https://play.google.com/store/apps/details?id=com.renrakucho.renrakucho" class="btn-test">
+      <span>Android（クローズドテスト）</span>Google Play で参加する
     </a>
   </div>
+  <p class="store-note">
+    Android版は現在クローズドテスト中です。インストールするには
+    <a href="https://groups.google.com/g/negtak-dev">negtak-dev グループ</a>
+    に参加したうえで、上のボタンから Google Play を開いてください。
+  </p>
 </div>
 
 <!-- ── 特徴 ── -->
@@ -285,10 +322,15 @@
     <a href="https://apps.apple.com/app/%E3%82%8C%E3%82%93%E3%82%89%E3%81%8F%E3%81%A1%E3%82%87%E3%81%86/id6775222668" class="btn-appstore">
       <span>App Store</span>無料でダウンロード
     </a>
-    <a href="https://play.google.com/store/apps/details?id=com.renrakucho.renrakucho" class="btn-appstore">
-      <span>Google Play</span>無料でダウンロード
+    <a href="https://play.google.com/store/apps/details?id=com.renrakucho.renrakucho" class="btn-test">
+      <span>Android（クローズドテスト）</span>Google Play で参加する
     </a>
   </div>
+  <p class="store-note">
+    Android版はクローズドテスト中です。
+    <a href="https://groups.google.com/g/negtak-dev">negtak-dev グループ</a>
+    に参加するとインストールできます。
+  </p>
 </section>
 
 <!-- ── フッター ── -->

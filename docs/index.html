@@ -59,6 +59,17 @@
       },
       {
         "@type": "MobileApplication",
+        "@id": "https://negtak.github.io/starar/#app",
+        "name": "SPACE AR",
+        "description": "星座・恒星・惑星・人工衛星をARで重ねて表示する天体観測アプリ。研究グレードの精密な天文計算と現地の実際の気象を組み合わせ、今・ここの空を再現します。",
+        "operatingSystem": "iOS",
+        "applicationCategory": "EducationApplication",
+        "offers": { "@type": "Offer", "price": "490", "priceCurrency": "JPY" },
+        "url": "https://negtak.github.io/starar/",
+        "inLanguage": "ja"
+      },
+      {
+        "@type": "MobileApplication",
         "@id": "https://negtak.github.io/renrakucho/#app",
         "name": "れんらくちょう",
         "description": "カップルや家族で「れんらくごと」を共有するアプリ。買い物メモ・きめごと・おかねを、ふたりで1冊のノートのように共有できます。",
@@ -132,6 +143,7 @@
     .app-card.green:hover  { border-color: rgba(46,204,113,0.4); }
     .app-card.blue:hover   { border-color: rgba(0,180,220,0.4); }
     .app-card.orange:hover { border-color: rgba(230,120,30,0.4); }
+    .app-card.purple:hover { border-color: rgba(124,108,255,0.45); }
 
     .app-icon {
       width: 80px;
@@ -184,6 +196,7 @@
     .app-card.green  .app-arrow { color: #3a7a5a; }
     .app-card.blue   .app-arrow { color: #3a6a8a; }
     .app-card.orange .app-arrow { color: #7a5a2a; }
+    .app-card.purple .app-arrow { color: #5a4f9a; }
     .app-card:hover .app-arrow { color: #aaa; }
 
     /* ── フッター ── */
@@ -204,6 +217,19 @@
 </header>
 
 <div class="apps">
+
+  <!-- SPACE AR -->
+  <a href="./starar/" class="app-card purple">
+    <div class="app-icon">
+      <img src="./starar/AppIcon.png" alt="SPACE AR" width="80" height="80" loading="lazy">
+    </div>
+    <div>
+      <h2 class="app-name">SPACE AR</h2>
+      <p class="app-desc">端末を空にかざすだけ。星座・惑星・人工衛星をARで精密表示。研究グレードの天文計算と実際の気象で、今・ここの空を再現する天体観測アプリ。</p>
+    </div>
+    <span class="app-badge badge-coming-soon">App Store 近日公開</span>
+    <span class="app-arrow">詳しく見る →</span>
+  </a>
 
   <!-- れんらくちょう -->
   <a href="./renrakucho/" class="app-card orange">

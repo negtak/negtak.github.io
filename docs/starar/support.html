@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>サポート - SPACE AR</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #1b1f5c 0%, #4a3aa0 50%, #2a8fd0 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .container {
+            background: white;
+            border-radius: 14px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+            padding: 40px;
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+        }
+        h1 { color: #222; margin-bottom: 20px; font-size: 2.4em; }
+        .support-text { color: #555; font-size: 1.15em; line-height: 1.8; margin: 28px 0; }
+        .email-address { color: #5a4ad0; font-weight: bold; font-size: 1.1em; }
+        .email-link {
+            display: inline-block;
+            margin-top: 16px;
+            padding: 15px 30px;
+            background: linear-gradient(135deg, #5a4ad0 0%, #2a8fd0 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .email-link:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(90, 74, 208, 0.45); }
+        .faq { text-align: left; margin-top: 36px; }
+        .faq h2 { font-size: 1.1em; color: #333; margin-bottom: 14px; text-align: center; }
+        .faq dt { font-weight: bold; color: #333; margin-top: 16px; }
+        .faq dd { color: #666; margin: 4px 0 0; font-size: 0.95em; line-height: 1.7; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>サポート</h1>
+        <div class="support-text">
+            <p>SPACE AR に関するご質問・ご不明な点は、<br>以下のメールアドレスまでお問い合わせください。</p>
+            <p class="email-address">negdev0114@gmail.com</p>
+        </div>
+        <a href="mailto:negdev0114@gmail.com?subject=SPACE%20AR%20サポート" class="email-link">メールを送信する</a>
+
+        <div class="faq">
+            <h2>よくある質問</h2>
+            <dl>
+                <dt>星座が空とずれて表示されます</dt>
+                <dd>AR の重ね位置は端末の方位センサに依存します。起動時に iPhone を8の字に動かすと改善します。車内や鉄骨建物の近くなど磁気の強い場所は避けてください。各天体の数値自体は精密に計算しています。</dd>
+                <dt>シミュレータで動きません</dt>
+                <dd>AR 表示にはカメラとセンサが必要なため、実機の iPhone でご利用ください。</dd>
+                <dt>オフラインでも使えますか</dt>
+                <dd>星表は内蔵のためオフラインでも星空を表示できます。気象データと最新の人工衛星データの取得にはインターネット接続が必要です。</dd>
+                <dt>位置情報は何に使われますか</dt>
+                <dd>現在地から見える空を計算するために使用します。座標は気象・衛星データの取得のために各APIへ送信されますが、個人を特定する情報の収集・追跡には使用しません。詳しくは<a href="./privacy-policy.html">プライバシーポリシー</a>をご覧ください。</dd>
+            </dl>
+        </div>
+    </div>
+</body>
+</html>

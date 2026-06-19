@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SPACE AR - 星空・天体観測AR</title>
+  <meta name="description" content="端末を空にかざすだけ。星座・恒星・惑星・人工衛星をARで重ねて表示。研究グレードの精密計算と現地の実際の気象で「今・ここで実際にどう見えるか」を示す天体観測アプリ。広告なし・サブスクなし・アカウント不要の買い切り。">
+  <link rel="canonical" href="https://negtak.github.io/starar/">
+  <meta property="og:title" content="SPACE AR - 星空・天体観測AR">
+  <meta property="og:description" content="星座・惑星・人工衛星をARで精密表示。研究グレードの天文計算と現地の実際の気象で、今・ここの空を再現する天体観測アプリ。">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://negtak.github.io/starar/">
+  <meta property="og:image" content="https://negtak.github.io/starar/AppIcon.png">
+  <meta property="og:locale" content="ja_JP">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="SPACE AR - 星空・天体観測AR">
+  <meta name="twitter:description" content="星座・惑星・人工衛星をARで精密表示。研究グレードの天文計算と実際の気象で、今・ここの空を再現。">
+  <meta name="twitter:image" content="https://negtak.github.io/starar/shot-01.png">
+  <link rel="icon" href="./AppIcon.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MobileApplication",
+    "name": "SPACE AR",
+    "description": "星座・恒星・惑星・人工衛星をARで重ねて表示する天体観測アプリ。研究グレードの精密な天文計算と現地の実際の気象を組み合わせ、今・ここの空を再現します。",
+    "operatingSystem": "iOS 16+",
+    "applicationCategory": "EducationApplication",
+    "offers": { "@type": "Offer", "price": "490", "priceCurrency": "JPY" },
+    "url": "https://negtak.github.io/starar/",
+    "inLanguage": "ja"
+  }
+  </script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #060912;
+      color: #e8ecf6;
+      line-height: 1.6;
+    }
+
+    /* ── ヒーロー ── */
+    .hero {
+      background:
+        radial-gradient(ellipse at 20% 10%, rgba(124,108,255,0.20) 0%, transparent 55%),
+        radial-gradient(ellipse at 80% 30%, rgba(90,209,255,0.14) 0%, transparent 50%),
+        linear-gradient(180deg, #0b1130 0%, #060912 70%);
+      text-align: center;
+      padding: 84px 24px 64px;
+      position: relative;
+      overflow: hidden;
+    }
+    /* 星のきらめき */
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(1.5px 1.5px at 15% 25%, #fff, transparent),
+        radial-gradient(1px 1px at 35% 60%, #cfe3ff, transparent),
+        radial-gradient(1.5px 1.5px at 55% 15%, #fff, transparent),
+        radial-gradient(1px 1px at 72% 48%, #ffe9b8, transparent),
+        radial-gradient(1.5px 1.5px at 88% 22%, #fff, transparent),
+        radial-gradient(1px 1px at 60% 78%, #cfe3ff, transparent),
+        radial-gradient(1px 1px at 25% 85%, #fff, transparent),
+        radial-gradient(1.5px 1.5px at 92% 70%, #fff, transparent);
+      opacity: 0.7;
+      pointer-events: none;
+    }
+    .hero > * { position: relative; z-index: 1; }
+    .hero-icon {
+      width: 120px;
+      height: 120px;
+      border-radius: 26px;
+      margin: 0 auto 24px;
+      box-shadow: 0 12px 48px rgba(124,108,255,0.45);
+      overflow: hidden;
+    }
+    .hero-icon img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .hero h1 {
+      font-size: clamp(2.2rem, 6vw, 3.4rem);
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      color: #ffffff;
+      margin-bottom: 12px;
+    }
+    .hero-sub {
+      font-size: clamp(1rem, 3vw, 1.2rem);
+      color: #aeb9ff;
+      margin: 0 auto 32px;
+      max-width: 520px;
+    }
+
+    .store-buttons { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .btn-appstore {
+      display: inline-block;
+      background: #ffffff;
+      color: #000000;
+      text-decoration: none;
+      padding: 14px 32px;
+      border-radius: 14px;
+      font-size: 1rem;
+      font-weight: 700;
+      box-shadow: 0 6px 24px rgba(0,0,0,0.5);
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .btn-appstore:hover { transform: translateY(-2px); box-shadow: 0 10px 32px rgba(124,108,255,0.5); }
+    .btn-appstore span { opacity: 0.55; font-size: 0.78rem; display: block; font-weight: 400; }
+    .price-pill {
+      display: inline-block;
+      margin-top: 18px;
+      background: rgba(124,108,255,0.16);
+      color: #c3bcff;
+      font-size: 0.85rem;
+      font-weight: 700;
+      padding: 6px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(124,108,255,0.3);
+    }
+    .store-note {
+      margin-top: 14px;
+      font-size: 0.82rem;
+      color: #7e88a8;
+      max-width: 460px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* ── セクション共通 ── */
+    section { padding: 64px 24px; max-width: 960px; margin: 0 auto; }
+    h2 {
+      font-size: clamp(1.4rem, 4vw, 2rem);
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 12px;
+      text-align: center;
+    }
+    .section-lead { text-align: center; color: #8a93b5; margin-bottom: 36px; }
+    .tag {
+      display: block;
+      text-align: center;
+      color: #5ad1ff;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    /* ── 特徴グリッド ── */
+    .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
+    .feature-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 18px;
+      padding: 28px 24px;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .feature-card:hover { transform: translateY(-3px); border-color: rgba(124,108,255,0.4); }
+    .feature-icon { font-size: 2.2rem; margin-bottom: 14px; }
+    .feature-card h3 { font-size: 1.05rem; font-weight: 700; color: #ffffff; margin-bottom: 8px; }
+    .feature-card p { font-size: 0.9rem; color: #97a0c0; line-height: 1.55; }
+
+    /* ── スクリーンショット ── */
+    .shots {
+      display: flex;
+      gap: 18px;
+      overflow-x: auto;
+      padding: 8px 24px 24px;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+    }
+    .shots img {
+      height: 520px;
+      width: auto;
+      border-radius: 28px;
+      border: 1px solid rgba(255,255,255,0.1);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.55);
+      scroll-snap-align: center;
+      flex-shrink: 0;
+    }
+
+    /* ── 精度バッジ ── */
+    .accuracy { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; }
+    .acc-card {
+      background: linear-gradient(160deg, rgba(124,108,255,0.12), rgba(90,209,255,0.06));
+      border: 1px solid rgba(124,108,255,0.22);
+      border-radius: 16px;
+      padding: 22px 20px;
+    }
+    .acc-card h3 { color: #c3bcff; font-size: 0.95rem; margin-bottom: 6px; }
+    .acc-card p { color: #97a0c0; font-size: 0.85rem; }
+
+    /* ── フッター ── */
+    footer {
+      text-align: center;
+      padding: 40px 24px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      color: #5b6486;
+      font-size: 0.85rem;
+    }
+    footer a { color: #8a8fd0; text-decoration: none; margin: 0 10px; }
+    footer a:hover { color: #aeb9ff; }
+
+    @media (max-width: 480px) {
+      .hero { padding: 60px 20px 48px; }
+      section { padding: 48px 20px; }
+      .shots img { height: 440px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── ヒーロー ── -->
+<div class="hero">
+  <div class="hero-icon"><img src="./AppIcon.png" alt="SPACE AR"></div>
+  <h1>SPACE AR</h1>
+  <p class="hero-sub">端末を夜空にかざすだけ。星座・惑星・人工衛星を、その場の空にARで重ねて表示する天体観測アプリ。</p>
+  <div class="store-buttons">
+    <a href="#" class="btn-appstore" aria-disabled="true">
+      <span>近日公開</span>App Store にまもなく登場
+    </a>
+  </div>
+  <div><span class="price-pill">買い切り ¥490 ・ 広告なし ・ サブスクなし</span></div>
+  <p class="store-note">iOS 16 以降対応。AR表示にはカメラと位置情報を使用します。配信開始までしばらくお待ちください。</p>
+</div>
+
+<!-- ── 特徴 ── -->
+<section>
+  <div class="tag">Features</div>
+  <h2>かざせば、空がそのまま天体図に</h2>
+  <p class="section-lead">眺めて楽しむだけでなく、研究・観測グレードの精密な計算で「今・ここで実際にどう見えるか」を示します。</p>
+  <div class="features">
+    <div class="feature-card">
+      <div class="feature-icon">✨</div>
+      <h3>星座・恒星をAR表示</h3>
+      <p>約8,900個の恒星と88星座を、星座線と名前つきで実際の空に重ねて表示します。</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🪐</div>
+      <h3>太陽・月・惑星</h3>
+      <p>太陽・月・水星〜海王星を色分け表示。地平線下の天体は自動で非表示にします。</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🛰️</div>
+      <h3>人工衛星と通過予報</h3>
+      <p>ISSなどの位置をリアルタイム表示。出現方位・最大高度・可視判定・雲量つきの通過予報を案内します。</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">👆</div>
+      <h3>タップで詳細</h3>
+      <p>どの天体もタップで等級・距離・赤経赤緯・高度方位・出南中没を表示。神話や豆知識つきの解説も。</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">⏱️</div>
+      <h3>タイムマシン</h3>
+      <p>日時を自由に設定し、早送り・巻き戻しで星空の動きを再現。過去や未来の空も眺められます。</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🌍</div>
+      <h3>任意地点シミュレーション</h3>
+      <p>地図タップや緯度経度入力で、世界中どこの空でも再現。旅行先の星空も事前にチェック。</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🌤️</div>
+      <h3>実際の気象を反映</h3>
+      <p>現地の実際の気象から透明度・結露リスク・「実効限界等級」を表示。今夜見えるかが分かります。</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🌌</div>
+      <h3>プラネタリウムモード</h3>
+      <p>カメラを暗くし、色とりどりの星をきらめかせて表示。室内でも星空を楽しめます。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── スクリーンショット ── -->
+<section style="max-width:none;padding-left:0;padding-right:0;">
+  <div class="tag">Screens</div>
+  <h2>画面イメージ</h2>
+  <div class="shots">
+    <img src="./shot-01.png" alt="星空のAR表示" loading="lazy">
+    <img src="./shot-02.png" alt="天体の詳細表示" loading="lazy">
+    <img src="./shot-03.png" alt="人工衛星の表示" loading="lazy">
+    <img src="./shot-04.png" alt="メシエ天体" loading="lazy">
+    <img src="./shot-05.png" alt="タイムマシン" loading="lazy">
+    <img src="./shot-06.png" alt="表示設定" loading="lazy">
+  </div>
+</section>
+
+<!-- ── 精度 ── -->
+<section>
+  <div class="tag">Accuracy</div>
+  <h2>研究・観測グレードの精度</h2>
+  <p class="section-lead">理想化された空ではなく、「実際にどう見えるか」にこだわった計算を行います。</p>
+  <div class="accuracy">
+    <div class="acc-card">
+      <h3>視位置の補正</h3>
+      <p>歳差・章動・年周光行差・固有運動を適用。月は地形心視差(最大約1°)も補正。</p>
+    </div>
+    <div class="acc-card">
+      <h3>大気差の補正</h3>
+      <p>取得した実際の気圧・気温で大気差を補正し、地平線近くの見え方を再現。</p>
+    </div>
+    <div class="acc-card">
+      <h3>計器HUD</h3>
+      <p>恒星時・ユリウス日・ΔT・観測地点などの数値をリアルタイムで表示。</p>
+    </div>
+    <div class="acc-card">
+      <h3>オフライン対応</h3>
+      <p>星表は内蔵のためオフラインでも空を表示(気象と最新の衛星データは通信を使用)。</p>
+    </div>
+  </div>
+  <p class="section-lead" style="margin-top:32px;font-size:0.82rem;">
+    ※ ARの重ね位置は端末の方位センサに依存するため数度ずれることがあります。各天体の数値は精密に計算しています。
+  </p>
+</section>
+
+<!-- ── フッター ── -->
+<footer>
+  <p style="margin-bottom:12px;">
+    <a href="./privacy-policy.html">プライバシーポリシー</a>
+    <a href="./terms-of-use.html">利用規約</a>
+    <a href="./support.html">サポート</a>
+  </p>
+  <p>© 2026 negtak. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
